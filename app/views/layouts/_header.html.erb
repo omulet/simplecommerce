@@ -1,0 +1,13 @@
+
+
+
+<table>
+  <tr>
+	<% @categories.each do |category| %>
+		<th><div class="listing-category">
+			<%= link_to category.description, category_products_url(category) , :category_id => category.id %>
+			</div>			
+		</th>
+	<% end%>
+	</tr>
+</table>

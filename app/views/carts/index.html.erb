@@ -1,0 +1,32 @@
+<h1>Cosul tau</h1>
+
+<% form_for @cart do |f| %>
+	<table>
+		<tr>
+			<th>Produs</th>
+			<th>Cantitate</th>
+			<th>Pret Unitar</th>
+			<th>Pret Total</th>
+			<th>Sterge</th>
+		</tr>
+
+		<% f.fields_for :cart_items do |c| %>
+			<tr>
+				<td><%= c.object.product.name %></td>
+			  	<td><%= c.text_field :quantity %></td>
+				<td><%= c.object.product.price %></td>
+				<td><%= c.object.total_price %></td>
+				<td><%= link_to '[x]', remove_from_cart_url(:id => c.object.product.id) %></td>
+			</tr>
+		<% end %>
+	</table>
+	<hr />
+	<table>
+		<tr><td>Subtotal</td>	<td><%= @cart.subtotal %></td></tr>
+	</table>
+	
+	<%= f.submit %>
+	
+	<%= link_to 'Order', new_order_path %>
+
+<% end %>

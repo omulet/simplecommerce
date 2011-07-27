@@ -1,0 +1,12 @@
+<h3>Shopping Cart</h3>
+<% if @cart.cart_items.size > 0 %>
+  <% @cart.cart_items.each do |item| %>
+    <p>
+      <%= "#{item.quantity} * #{item.product.name}" %>
+      <%= link_to "[x]", remove_from_cart_url(:id => item.product.id) %>
+    </p>
+  <% end %>
+	<%= link_to 'Cos', cart_path(@cart)%> 
+<% else %>
+  Your cart is empty.
+<% end %>

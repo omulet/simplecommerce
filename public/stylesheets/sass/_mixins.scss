@@ -1,0 +1,85 @@
+@mixin clearfix {
+  &:before, &:after {
+    content: "\0020"; display: block; height: 0; visibility: hidden;	
+  } 
+  &:after { clear: both; }
+  zoom: 1;
+}
+
+@mixin horizontal-menu($spacing:0, $t:0, $r:0, $b:0, $l:0) {
+  padding:$t $r $b $l;
+  margin:0;
+  li, li a {
+    @include inline-block; }
+  li {
+    margin:0 $spacing 0 $spacing;
+    }
+  a {
+    vertical-align: middle; }
+}
+
+@mixin inline-block {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+}
+
+@mixin border-radius($values) {
+  -moz-border-radius: $values;
+  -webkit-border-radius: $values;
+  border-radius: $values;
+}
+
+@mixin box-shadow($x, $y, $offset, $hex) {
+  -moz-box-shadow: $x $y $offset $hex;
+  -o-box-shadow: $x $y $offset $hex;
+  -webkit-box-shadow: $x $y $offset $hex;
+  box-shadow: $x $y $offset $hex;
+
+  $iecolor: '#' + hex(red($hex)) + hex(green($hex)) + hex(blue($hex));
+  filter: progid:DXImageTransform.Microsoft.Shadow(Color='#{$iecolor}', Direction=135);
+  //-ms-filter: quote(progid:DXImageTransform.Microsoft.dropshadow(OffX=#{$x}, OffY=#{$y}, Color='#{$iecolor}'));
+}
+
+
+@mixin text-shadow($h: 2px, $v: 2px, $b: 2px, $c: rgba( 0, 0, 0, .45)) {
+  $value: $h $v $b $c;
+  -moz-text-shadow: $value;
+  -webkit-text-shadow: $value;
+  -o-text-shadow: $value;
+  text-shadow: $value;
+}
+
+@mixin ie-linear-gradient($top, $bottom) {
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$top}', endColorstr='#{$bottom}');
+   -ms-filter: quote(progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$top}', endColorstr='#{$bottom}'));
+   zoom:1;
+}
+
+@mixin gradient($top, $bottom) {
+  background-color: $bottom;
+  background-image: -moz-linear-gradient(top, $top, $bottom);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, $top),color-stop(1, $bottom));
+  
+  @include ie-linear-gradient($top,$bottom);
+}
+
+@mixin hex-rgba($hex, $alpha) {
+  $hexopac: '#' + hex(round($alpha*255)) + '' + hex(red($hex)) + '' + hex(green($hex)) + '' + hex(blue($hex));
+  @include ie-linear-gradient($hexopac, $hexopac);
+  background-color: rgba(red($hex), green($hex), blue($hex), $alpha);
+}
+
+@mixin rotate($deg) {
+  -moz-transform: rotate(#{$deg}deg);
+  -o-transform: rotate(#{$deg}deg);
+  -webkit-transform: rotate(#{$deg}deg);
+}
+
+@mixin transition($value) {
+  -moz-transition: $value;
+  -o-transition: $value;
+  -webkit-transition: $value;
+  transition: $value;
+}

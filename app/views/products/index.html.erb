@@ -1,0 +1,51 @@
+
+<%=render :partial => 'layouts/header'%>
+
+
+
+<h1>Produse</h1>
+
+<div class="products clearfix">
+<% @products.in_groups_of(5, false) do |group| %>
+  <div class="clearfix">
+  <% group.each do |product| %>
+
+    <div class="listing-product"><div class="wrapper">
+      <div class="title"><strong><%= link_to product.name, product %></strong></div>
+      <div class="price"><%= product.price %> lei</div>    
+      <p class="description"><%= product.description %></p>
+  
+      <%= form_tag add_to_cart_url, :method => "post", :class => "add-to-cart" do |f| %>
+  			<%= text_field_tag "product[quantity]", "1" %>
+  			<%= hidden_field_tag "product[id]", product.id %>
+  			<%= submit_tag "Add" %>
+  		<% end %>
+		
+  		<% if can? [:update, :destroy], Product %>
+  		  <div class="controls">
+    	    <%= link_to 'Edit', edit_product_path(product) %>
+    	    <%= link_to 'Delete', product, :confirm => 'Are you sure?', :method => :delete %>
+    	  </div>
+     	<% end %>
+    </div></div>
+
+  <% end %>
+  </div>
+	  <p>
+		<%= image_tag @product.photo.url %>
+		<%= image_tag @product.photo.url(:medium) %>
+		<%= image_tag @product.photo.url(:thumb) %>
+	</p>
+  
+ <% debug @order%>
+<% end %>
+
+
+</div>
+
+<% if can? :create, Product %>
+  <div class="controls">
+    <%= link_to 'New Product', new_product_path %>
+  </div>
+
+<% end %>

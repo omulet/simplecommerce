@@ -1,0 +1,55 @@
+<%= form_for(@order) do |f| %>
+	<%= f.error_messages %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<h1>Listing addresses</h1>
+<div>
+<table>
+<% @addresses.each do |address| %>
+  <tr>
+	<td><%= label :order, address.address_label %></td>
+	<td><%= radio_button  :order, "address_id", address.id, {:checked => (@checked_address == address.id)} %></td>
+</tr>
+</table>
+<% end %>
+<%= link_to 'New Address', new_address_path %>
+</div>
+
+
+
+<h1>Listing deliveries</h1>
+<div>
+
+<% @deliveries.each do |delivery| %>
+<table>
+  <tr>
+    <td><%= label :order , delivery.delivery_mode.to_s + " " + delivery.delivery_fee.to_s + "RON" %></td>
+    <td><%= radio_button :order, :delivery_id, delivery.id, {:checked => (@checked_delivery == delivery.id)}  %></td>
+  </tr>
+</table>
+<% end %>
+<%= link_to 'New Delivery', new_delivery_path %>
+</div>
+
+<div>
+	Taxe livrare: <%= @order.delivery_taxes %><br />
+	Total general: <%= @order.delivery_taxes + @cart.subtotal %>
+</div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+<%= debug @order.errors %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Delivery mode:</b>
+  <%= @delivery.delivery_mode %>
+</p>
+
+<p>
+  <b>Delivery fee:</b>
+  <%= @delivery.delivery_fee %>
+</p>
+
+
+<%= link_to 'Edit', edit_delivery_path(@delivery) %> |
+<%= link_to 'Back', deliveries_path %>

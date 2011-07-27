@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  delivery_mode: MyString
+  delivery_fee: 1.5
+
+two:
+  delivery_mode: MyString
+  delivery_fee: 1.5
