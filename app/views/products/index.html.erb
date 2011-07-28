@@ -1,4 +1,3 @@
-
 <%=render :partial => 'layouts/header'%>
 
 
@@ -11,6 +10,7 @@
   <% group.each do |product| %>
 
     <div class="listing-product"><div class="wrapper">
+      <%= image_tag product.photo.url(:medium) %>
       <div class="title"><strong><%= link_to product.name, product %></strong></div>
       <div class="price"><%= product.price %> lei</div>    
       <p class="description"><%= product.description %></p>
@@ -28,14 +28,8 @@
     	  </div>
      	<% end %>
     </div></div>
-
   <% end %>
   </div>
-	  <p>
-		<%= image_tag @product.photo.url %>
-		<%= image_tag @product.photo.url(:medium) %>
-		<%= image_tag @product.photo.url(:thumb) %>
-	</p>
   
  <% debug @order%>
 <% end %>

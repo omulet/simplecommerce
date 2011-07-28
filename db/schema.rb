@@ -128,9 +128,6 @@ ActiveRecord::Schema.define(:version => 20110727104048) do
     t.datetime "updated_at"
   end
 
-  add_index "user_admins", ["email"], :name => "index_user_admins_on_email", :unique => true
-  add_index "user_admins", ["reset_password_token"], :name => "index_user_admins_on_reset_password_token", :unique => true
-
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "email"
