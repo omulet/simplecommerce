@@ -1,0 +1,20 @@
+<% product ||= list_product %>
+
+<div class="product clearfix">
+  <div class="frame">
+    <%= image_tag product.photo.url(:thumb) %>
+  </div>
+  <div class="description">
+    <p class="title"><%= link_to product.name, product %></p>
+    <p class="description"><%= shorten product.description, 50 %></p>
+    <p class="price"><%= product.price %> Lei</p>
+    <p class="controls">
+      <!-- <a href="#" class="icon text cos">Adauga in cos</a> -->
+      <%= form_tag add_to_cart_url, :method => "post", :class => "add-to-cart" do %>
+    		<%= hidden_field_tag "product[quantity]", "1" %>
+    		<%= hidden_field_tag "product[id]", product.id %>
+    		<%= submit_tag "Adauga in cos", :class => "icon text-icon cos" %>
+    	<% end %>
+    </p>
+  </div>
+</div><!-- .product -->

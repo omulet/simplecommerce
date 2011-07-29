@@ -2,16 +2,15 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.xml
    load_and_authorize_resource
-  def index
-  	if !(params[:category_id].blank?) 
-  		@category = Category.find(params[:category_id])
-    	@products = @category.products
-	else
-		@products= Product.find(:all)
-	end
-  		
-	@categories = Category.find(:all, :order => 'description')
 
+  def index
+    if !(params[:category_id].blank?) 
+    	@category = Category.find(params[:category_id])
+    	@products = @category.products
+    else
+      @products= Product.find(:all)
+    end
+	  
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @products }

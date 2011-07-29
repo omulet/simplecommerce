@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   layout "no_sidebar"
   def add_to_cart
- 	product = Product.find(params[:product][:id])
+ 	  product = Product.find(params[:product][:id])
     if current_user.nil?
     	redirect_to(:login, :notice => 'Login in.')
     	

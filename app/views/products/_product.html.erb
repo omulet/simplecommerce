@@ -1,0 +1,12 @@
+<div class="product">
+  <div class="frame">
+    <%= image_tag product.photo.url(:medium) %><!-- TODO adjust paperclip photo sizes -->
+    <p class="price"><%= product.price %> Lei</p>
+  </div>
+  <p class="title"><%= link_to product.name, product %></p>
+  <%= form_tag add_to_cart_url, :method => "post", :class => "add-to-cart" do %>
+		<%= text_field_tag "product[quantity]", "1" %>
+		<%= hidden_field_tag "product[id]", product.id %>
+		<%= submit_tag "Add" %>
+	<% end %>
+</div><!-- .product -->

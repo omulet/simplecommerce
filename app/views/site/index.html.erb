@@ -1,0 +1,11 @@
+<section id="top-products" class="product-grid clearfix">
+  <h1 class="section-title">Cele mai <strong>vandute</strong></h1>
+  
+  <%= render :partial => "products/product", :collection => @top_vanzari %>
+</section><!-- .grid-products -->
+
+
+<section id="discounts" class="product-list clearfix">
+  <h1 class="section-title">Produse cu <strong>pret redus</strong></h1>
+  <%= render :partial => "products/list_product", :collection => @reduceri %>
+</section>

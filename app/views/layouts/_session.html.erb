@@ -1,10 +1,7 @@
-<div class="session-bar">
+<div class="session">
   <% if current_user %>
-    Salut <%= current_user.username %>!         
-    <%= link_to "Edit Profile", edit_user_path(current_user.id)%>
-    <%= link_to "Logout", :logout%>
+    <span class="welcome">Bun venit, <strong><%= current_user.username %></strong></span><% if @cart.cart_items.size > 0 %><%= link_to "Cos <span class='items-count'>3</span>".html_safe, cart_path(@cart) %><% end %><%= link_to "Contul tau", edit_user_path(current_user.id) %><%= link_to "Log out", :logout, :class => "last" %>
   <% else %>
-    <%= link_to "Register", new_user_path%> | 
-    <%= link_to "Login", :login %>
+    <span class="welcome">Bun venit!</span><%= link_to "Autentificare", :login %><%= link_to "Cont nou", new_user_path, :class => "last" %>
   <% end %>
 </div>

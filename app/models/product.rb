@@ -10,8 +10,10 @@ class Product < ActiveRecord::Base
     :path => ':rails_root/public/images/photos/:id/:style.:extension',
     :default_url => '/images/photos/images.jpg',
     :styles => {
-      :thumb=> "100x100#",
-      :medium  => "150x150>" 
+      :tiny => "42x42#",
+      :thumb => "62x62#",
+      :medium  => "128x100#",
+      :large => "300x300>" 
     }
 
 end

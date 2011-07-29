@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
-  before_filter :current_cart
+  before_filter :current_cart, :get_categories
   
   private
   
@@ -24,5 +24,9 @@ class ApplicationController < ActionController::Base
       session[:cart_id] = cart.id
     end
     @cart = cart
+  end
+  
+  def get_categories
+    @product_categories = Category.find(:all, :order => 'description')
   end
 end
