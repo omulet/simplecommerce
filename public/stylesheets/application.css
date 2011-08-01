@@ -7,8 +7,17 @@ body {
 a {
   color: #058290; }
 
-header {
+header.main {
   padding: 40px 0 20px; }
+  header.main h1.website-logo {
+    font-size: 2em;
+    color: #504b43;
+    margin: 20px 0 0;
+    padding: 0;
+    line-height: 26px; }
+    header.main h1.website-logo a {
+      color: inherit;
+      text-decoration: none; }
 
 .al-right {
   text-align: right; }
@@ -18,13 +27,25 @@ header {
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  padding: 20px 0; }
+  padding: 40px 0 20px; }
 
 .container_12 {
   /*background-image: url(../img/12_col.gif);*/ }
 
 .container_16 {
   /*background-image: url(../img/16_col.gif);*/ }
+
+.apperror, .appnotice {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  padding-top: 2px; }
+
+.apperror {
+  color: #E37847; }
+
+.appnotice {
+  color: #cecbc4; }
 
 h1, h2, h3 {
   font-family: 'Oswald', helvetica, arial, sans-serif;
@@ -48,6 +69,29 @@ h1 strong, h2 strong, h3 strong {
     margin: 0 0 0 0; }
   .horizontal-menu a {
     vertical-align: middle; }
+
+.main-nav {
+  margin-top: 20px; }
+  .main-nav a {
+    text-decoration: none;
+    color: #dfdcd5;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    line-height: 26px;
+    padding: 0 10px;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+    border-radius: 14px; }
+  .main-nav li.active a {
+    border: 1px solid #716b60;
+    background-color: #a39e93;
+    background-image: -moz-linear-gradient(top, #bdb9b0, #a39e93);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #bdb9b0), color-stop(1, #a39e93));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bdb9b0', endColorstr='#a39e93');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#bdb9b0', endColorstr='#a39e93')";
+    zoom: 1;
+    box-shadow: inset 0 1px 0 #ccc8c1, 0 1px 0 #a8a49c;
+    color: #38352e;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4); }
 
 .session {
   border: 1px solid #716b60;
@@ -217,7 +261,7 @@ nav ul, nav ul li {
     width: 20px; }
 
 .product-list .product {
-  margin-bottom: 20px; }
+  margin-bottom: 10px; }
 
 .product-list .product p {
   margin: 0 0 5px;
@@ -227,7 +271,7 @@ nav ul, nav ul li {
   background-color: #f6f5f2;
   border: 1px solid #a9a59c;
   width: 70px;
-  margin: 0 20px 0 0;
+  margin: 0 10px 0 0;
   float: left;
   border-radius: 4px;
   -moz-border-radius: 4px;

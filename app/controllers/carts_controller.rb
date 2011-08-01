@@ -8,7 +8,8 @@ class CartsController < ApplicationController
 	else
    		 @cart.add_item(product, params[:product][:quantity].to_i)  
    		 @cart.add_user(current_user)
-    	 redirect_to products_url
+    	 # redirect_to products_url
+    	 redirect_to :back, :notice => "Produsul <strong>#{product.name}</strong> a fost adaugat in cos.".html_safe
     end
   end
   

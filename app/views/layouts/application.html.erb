@@ -11,14 +11,20 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
-  <header class="container_12">
-    <div class="grid_3">
-      <h1>
-        <%= link_to "Mercerie", root_url%>
+  <% if flash[:error] %>
+    <div class="apperror"><%= flash[:error] -%></div>
+  <% end %>
+  <% if flash[:notice] %>
+    <div class="appnotice"><%= flash[:notice] -%></div>
+  <% end %>
+  
+  <header class="container_12 main">
+    <div class="grid_2">
+      <h1 class="website-logo">
+        <%= link_to "Mercerie", root_url %>
       </h1>
     </div>
-    <div class="grid_3">
+    <div class="grid_4">
       <%= render :partial => 'layouts/navigation' %>
     </div>
     <div class="grid_6 al-right">

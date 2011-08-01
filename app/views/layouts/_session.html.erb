@@ -1,6 +1,6 @@
 <div class="session">
   <% if current_user %>
-    <span class="welcome">Bun venit, <strong><%= current_user.username %></strong></span><% if @cart.cart_items.size > 0 %><%= link_to "Cos <span class='items-count'>3</span>".html_safe, cart_path(@cart) %><% end %><%= link_to "Contul tau", edit_user_path(current_user.id) %><%= link_to "Log out", :logout, :class => "last" %>
+    <span class="welcome">Bun venit, <strong><%= current_user.username %></strong></span><% if @cart.cart_items.size > 0 %><%= link_to "Cos <span class='items-count'>#{@cart.cart_items.size}</span>".html_safe, cart_path(@cart) %><% end %><%= link_to "Contul tau", edit_user_path(current_user.id) %><%= link_to "Log out", :logout, :class => "last" %>
   <% else %>
     <span class="welcome">Bun venit!</span><%= link_to "Autentificare", :login %><%= link_to "Cont nou", new_user_path, :class => "last" %>
   <% end %>
